@@ -478,45 +478,6 @@
             const dayAfterTomorrow = new Date(today);
             dayAfterTomorrow.setDate(dayAfterTomorrow.getDate() + 2);
 
-            appointments = [
-                {
-                    id: generateId(),
-                    patientName: "Maria Silva",
-                    patientPhone: "(11) 98765-4321",
-                    birthType: "normal",
-                    doctor: "Natalie Bianchi",
-                    date: tomorrow.toISOString().split('T')[0],
-                    time: "09:00",
-                    datetime: new Date(`${tomorrow.toISOString().split('T')[0]}T09:00`).getTime(),
-                    notes: "Primeira gravidez, sem complicações",
-                    status: "agendado"
-                },
-                {
-                    id: generateId(),
-                    patientName: "Ana Oliveira",
-                    patientPhone: "(11) 91234-5678",
-                    birthType: "cesarea",
-                    doctor: "Anne D'Luddhiev",
-                    date: tomorrow.toISOString().split('T')[0],
-                    time: "14:00",
-                    datetime: new Date(`${tomorrow.toISOString().split('T')[0]}T14:00`).getTime(),
-                    notes: "Cesárea agendada, segunda gravidez",
-                    status: "agendado"
-                },
-                {
-                    id: generateId(),
-                    patientName: "Carla Santos",
-                    patientPhone: "(11) 99876-5432",
-                    birthType: "humanizado",
-                    doctor: "Natalie Bianchi",
-                    date: dayAfterTomorrow.toISOString().split('T')[0],
-                    time: "10:00",
-                    datetime: new Date(`${dayAfterTomorrow.toISOString().split('T')[0]}T10:00`).getTime(),
-                    notes: "Preferência por parto humanizado",
-                    status: "agendado"
-                }
-            ];
-
             saveAppointments();
             renderCalendar();
         }
