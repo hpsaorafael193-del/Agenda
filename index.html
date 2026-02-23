@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agenda de Consultas - HPSR</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+     <link rel="stylesheet" href="assets/css/style.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="header-title">
+                <img src="assets/logo/logo.png" alt="Logo HPSR" class="logo-img">
+                <h1>Agenda de Consultas</h1>
+            </div>
+
+            <div class="subtitle">Hospital São Rafael - Gestão de Agendamentos de Consultas</div>
+        </div>
+
+        <div class="content">
+            <!-- Formulário de Agendamento -->
+            <div class="form-section">
+                <h2><i class="fas fa-plus-circle"></i> Novo Agendamento</h2>
+
+                <div id="alert-container"></div>
+
+                <div class="form-group">
+                    <label class="form-label"><i class="fas fa-user"></i> Nome do Paciente</label>
+                    <input type="text" class="form-input" id="patient-name"
+                        placeholder="Digite o nome completo do paciente" maxlength="50">
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label"><i class="fas fa-phone"></i> Telefone</label>
+                    <input type="tel" class="form-input" id="patient-phone" placeholder="(055) 999-999">
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label"><i class="fas fa-stethoscope"></i> Tipo de Consulta</label>
+                    <select class="form-select" id="birth-type">
+                        <option value="consulta">Consulta</option>
+                        <option value="retorno">Retorno</option>
+                        <option value="procedimento">Procedimento</option>
+
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label"><i class="fas fa-user-md"></i> Médico Responsável</label>
+                    <div class="doctors-container">
+                        <div class="doctor-option" data-doctor="anne">
+                            <div class="doctor-icon"><i class="fas fa-user-md"></i></div>
+                            <div class="doctor-name">Dra. Anne<br> D'Luddhiev</div>
+                        </div>
+                        <div class="doctor-option" data-doctor="igor">
+                            <div class="doctor-icon"><i class="fas fa-user-md"></i></div>
+                            <div class="doctor-name">Dr. Igor<br>Luddhiev</div>
+                        </div>
+                        <div class="doctor-option" data-doctor="natalie">
+                            <div class="doctor-icon"><i class="fas fa-user-md"></i></div>
+                            <div class="doctor-name">Dra. Natalie<br>Bianchi</div>
+                        </div>
+                        <div class="doctor-option" data-doctor="luan">
+                            <div class="doctor-icon"><i class="fas fa-user-md"></i></div>
+                            <div class="doctor-name">Dr. Luan<br>D'Amato</div>
+                        </div>
+                        <div class="doctor-option" data-doctor="lia">
+                            <div class="doctor-icon"><i class="fas fa-user-md"></i></div>
+                            <div class="doctor-name">Dra. Lia<br>Vespucci</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label"><i class="fas fa-calendar-day"></i> Data da Consulta</label>
+                    <input type="date" class="form-input" id="birth-date">
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label"><i class="fas fa-clock"></i> Horário da Consulta</label>
+                    <input type="time" class="form-input" id="birth-time" step="3600">
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label"><i class="fas fa-sticky-note"></i> Observações</label>
+                    <textarea class="form-input" id="notes" rows="3"
+                        placeholder="Observações importantes sobre a consulta..."></textarea>
+                </div>
+
+                <button class="btn-agendar" id="btn-schedule">
+                    <i class="fas fa-calendar-plus"></i> Agendar Consulta
+                </button>
+            </div>
+
+            <!-- Visualização da Agenda -->
+            <div class="agenda-section">
+                <div class="agenda-header">
+                    <div class="calendar-controls">
+                        <button class="btn-nav" id="btn-prev-month">
+                            <i class="fas fa-chevron-left"></i>
+                        </button>
+                        <div class="current-month" id="current-month">Junho 2025</div>
+                        <button class="btn-nav" id="btn-next-month">
+                            <i class="fas fa-chevron-right"></i>
+                        </button>
+                    </div>
+
+                    <div class="legend">
+                        <div class="legend-item">
+                            <div class="legend-color"
+                                style="background: linear-gradient(135deg, #8d6e63 0%, #6d4c41 100%);"></div>
+                            <span>Dra. Anne D'Luddhiev</span>
+                        </div>
+                        <div class="legend-item">
+                            <div class="legend-color"
+                                style="background: linear-gradient(135deg, #bcaaa4 0%, #a1887f 100%);"></div>
+                            <span>Dr. Igor Luddhiev</span>
+                        </div>
+                        <div class="legend-item">
+                            <div class="legend-color"
+                                style="background: linear-gradient(135deg, #d7ccc8 0%, #bcaaa4 100%);"></div>
+                            <span>Dr. Luan D'Amato</span>
+                        </div>
+                        <div class="legend-item">
+                            <div class="legend-color"
+                                style="background: linear-gradient(135deg, #a1887f 0%, #8d6e63 100%);"></div>
+                            <span>Dra. Natalie Bianchi</span>
+                        </div>
+                        <div class="legend-item">
+                            <div class="legend-color"
+                                style="background: linear-gradient(135deg, #efe7db 0%, #d7ccc8 100%);"></div>
+                            <span>Dra. Lia Vespucci</span>
+                        </div>
+                        <div class="legend-item">
+                            <div class="legend-color" style="background-color: #fff6e5;"></div>
+                            <span>Hoje</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="calendar" id="calendar">
+                    <!-- O calendário será gerado via JavaScript -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal de Confirmação -->
+        <div class="modal" id="confirmation-modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 class="modal-title"><i class="fas fa-calendar-check"></i> Confirmar Agendamento</h3>
+                    <button class="btn-close" id="btn-close-modal">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <div class="appointment-details" id="modal-details">
+                        <!-- Detalhes do agendamento serão inseridos aqui -->
+                    </div>
+                    <div class="modal-buttons">
+                        <button class="btn-confirm" id="btn-confirm-appointment">Confirmar</button>
+                        <button class="btn-cancel" id="btn-cancel-appointment">Cancelar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>Agenda de Consultas - Hospital São Rafael &copy; 2026 </p>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="assets/js/app.js"></script>
+    
+</body>
+
+</html>
